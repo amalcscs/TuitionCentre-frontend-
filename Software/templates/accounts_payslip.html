@@ -1,0 +1,185 @@
+{% extends 'Acc_index.html' %}
+{% load static %}
+{% block content %}
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<style>
+#tble{
+  margin-bottom: 5px;
+  color: white; 
+  border-color: white;
+  
+  width: 100%;
+  display: none;
+}
+  
+</style>
+
+<body>
+    <div class="row">
+        <div class="col-12 col-sm-1 col-md-1 col-lg-1"></div>
+        <div class="col-12 col-sm-10 col-md-10 col-lg-12 grid-margin">
+            <div class="card mt-3 mb-5">
+                <div class="card-body">
+                    <div class="card-body" id="personForm">
+    
+                        <div class="row mt-5 ">
+                            <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                <div class="form-group row ">
+                                    <label class="col-6 col-sm-6 col-md-6 col-lg-5 col-form-label ">Batch</label>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 ">
+                                        <select class="badge badge-outline-primary bg-dark text-light " id="depmt" name="dep "><option style="display: none ">Batch</option>
+                                            
+                                            <option>Morning</option>
+                                            <option>Evening</option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 "></div>
+                            <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                <div class="form-group row ">
+                                    <label class="col-6 col-sm-6 col-md-6 col-lg-5 col-form-label ">Designation </label>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 ">
+                                        <select class="badge badge-outline-primary bg-dark text-light " id="desi" name="desig "><option style="display: none ">Designation</option>
+                          <option >Staff</option>
+                          <option >Student</option>
+                          <option >Manager</option>
+                          
+                        </select>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+                        <div class="row mt-5 ">
+                            <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                <div class="form-group row ">
+                                    <label class="col-6 col-sm-6 col-md-6 col-lg-5 col-form-label ">FROM</label>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 ">
+                                        <input type="Date" class="form-control text-light " name="start " id="txtDate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 col-lg-2 "></div>
+                            <div class="col-12 col-sm-12 col-md-5 col-lg-5 ">
+                                <div class="form-group row ">
+                                    <label class="col-6 col-sm-6 col-md-6 col-lg-5 col-form-label ">TO</label>
+                                    <div class="col-6 col-sm-6 col-md-6 col-lg-6 ">
+                                        <input type="Date" class="form-control text-light" name="start " id="txtDate1">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4 ">
+                                <center>
+                                   <button type="button" class="btn btn-primary btn-icon-text " id="btnSearch" style="width: 100px; ">Search </button>
+                                </center>
+    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-lg-12 grid-margin stretch-card" id="tble">
+            <div class="card">
+                <div class="card-body">
+                    <!-- <label>Attendance List</label><br><br>
+                    <input type="text" id="search" class="form-control" placeholder="search..." onkeyup="myFunction()" style="color: white !important;"> -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered mt-4 text-light" id="myTable" style="border-color: white;">
+                            <thead >
+                                 <tr >
+                                    <th scope="col" style="color: white;">PARTICULARS</th>
+                                    <th scope="col" style="color: white;">EMPLOYEE ID</th>
+                                    <th scope="col" style="color: white;">ACCOUNT NUMBER</th>
+                                    <th scope="col" style="color: white;">BANK NAME</th>
+                                    <th scope="col" style="color: white;">BRANCH</th>
+                                    <th scope="col" style="color: white;">EMAIL ID</th>
+                                    <th scope="col" style="color: white;">VIEW SLIP</th>
+                                </tr>
+                            </thead>
+                            <tbody>                              
+                                <tr style="color: white;">
+                                    <td  style="color: white;">Staff</td>
+                                    <td  style="color: white;">INF1230</td>
+                                    <td  style="color: white;">4000235689</td>
+                                    <td  style="color: white;">SBI</td>
+                                    <td  style="color: white;">Palakkad</td>
+                                    <td  style="color: white;">staff@gmail.com</td>
+                                    <td><a href="{% url 'Accounts_CurrentStaffpayslipdetails'%}">View slip</a></td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+      </div>
+    </div>
+    </div>
+
+  {% comment %} <script>
+    var a;
+    function display()
+    {
+      if(a==1)
+      {
+        document.getElementById("tble").style.display="block";
+      }    
+    }
+    </script> {% endcomment %}
+
+    {% comment %} <script type="text/javascript">
+      $("#btnSearch").click(function() {
+        const deptId = $("txtFrom").val();
+        const desgId = $("txtTo").val();
+        $.ajax({
+          url: '\app\man_TLattendance',
+          data: {
+            'dept_id': deptId,
+            'desig_id': desgId
+          },
+          success: function(data){
+            $(#tble).html(data);
+          }
+        });
+      });
+      function show(){
+        document.getElementById('tble').style.display ="block";
+      }
+    </script> {% endcomment %}
+
+    <script>
+      const targetDiv = document.getElementById("tble");
+      const btn = document.getElementById("btnSearch");
+      btn.onclick = function () {
+        if (targetDiv.style.display = "block") {
+          targetDiv.style.display = "block";
+        } else {
+          targetDiv.style.display !== "none";
+        }
+      };
+    </script>
+
+
+<!-- <script>
+  $(function () {
+    $("#txtFrom").datepicker({
+      minDate: new Date(2022, 2 - 1, 1)
+    });
+  });
+  $(function () {
+    $("#txtTo").datepicker({
+       maxDate: new Date(2022, 3 - 1, 1)
+    });
+  });
+</script> -->
+
+    </body>
+{% endblock %}
